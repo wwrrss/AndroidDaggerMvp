@@ -1,6 +1,7 @@
 package willermo.me.dependency
 
 import android.app.Application
+import com.squareup.leakcanary.LeakCanary
 import dagger.android.DaggerApplication
 import willermo.me.dependency.di.ApplicationComponent
 import willermo.me.dependency.di.ApplicationModule
@@ -15,9 +16,16 @@ class DependencyApp:Application(){
 
     override fun onCreate() {
         super.onCreate()
+
         component = DaggerApplicationComponent.builder()
                     .applicationModule(ApplicationModule(this))
                     .build()
+        if(LeakCanary.isInAnalyzerProcess(this)){
+            return
+        }
+        if(BuildConfig.DEBUG){
+            LeakCanary.install(this)
+        }
     }
 
     open fun getAppComponent():ApplicationComponent{

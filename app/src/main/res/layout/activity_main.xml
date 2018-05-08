@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="Save Value"
         android:onClick="saveValue"
+        android:id="@+id/mainAcivitySaveButton"
         />
 
 

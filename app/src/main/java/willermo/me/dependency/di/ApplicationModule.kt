@@ -20,9 +20,7 @@ import javax.inject.Singleton
  * Created by william on 3/27/18.
  */
 @Module
-class ApplicationModule(context: Context){
-
-    val context = context
+class ApplicationModule(val context: Context){
 
     @Provides
     @Singleton

@@ -35,7 +35,7 @@ class MainPresenterImp @Inject constructor(val sharedPreferences:SharedPreferenc
     }
 
     override fun onDestroy() {
-
+        viewContract = null
     }
 
     override fun fetchAllPosts(){
