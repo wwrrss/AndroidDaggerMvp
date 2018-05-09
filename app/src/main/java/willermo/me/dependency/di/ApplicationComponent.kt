@@ -1,6 +1,7 @@
 package willermo.me.dependency.di
 
 import dagger.Component
+import willermo.me.dependency.DependencyApp
 import willermo.me.dependency.activities.MainActivity
 import javax.inject.Singleton
 
@@ -12,6 +13,6 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(ApplicationModule::class))
 open interface ApplicationComponent{
     fun inject(target: MainActivity)
-    
+    fun inject(target: DependencyApp)
 
 }

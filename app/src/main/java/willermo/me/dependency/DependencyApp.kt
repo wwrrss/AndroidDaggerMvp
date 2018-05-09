@@ -10,16 +10,13 @@ import willermo.me.dependency.di.DaggerApplicationComponent
 /**
  * Created by william on 3/27/18.
  */
-class DependencyApp:Application(){
+open class DependencyApp:Application(){
 
-    lateinit var component: ApplicationComponent
+    open lateinit var component: ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
-
-        component = DaggerApplicationComponent.builder()
-                    .applicationModule(ApplicationModule(this))
-                    .build()
+        createDaggerComponentGraph()
         if(LeakCanary.isInAnalyzerProcess(this)){
             return
         }
@@ -30,6 +27,12 @@ class DependencyApp:Application(){
 
     open fun getAppComponent():ApplicationComponent{
         return component
+    }
+
+    open fun createDaggerComponentGraph(){
+        component = DaggerApplicationComponent.builder()
+                .applicationModule(ApplicationModule(this))
+                .build()
     }
 
 

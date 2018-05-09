@@ -20,7 +20,7 @@ import javax.inject.Singleton
  * Created by william on 3/27/18.
  */
 @Module
-class ApplicationModule(val context: Context){
+open class ApplicationModule(val context: Context){
 
     @Provides
     @Singleton
@@ -36,7 +36,7 @@ class ApplicationModule(val context: Context){
 
     @Provides
     @Singleton
-    fun providesOkHttpClient():OkHttpClient{
+    open fun providesOkHttpClient():OkHttpClient{
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BASIC
         val client = OkHttpClient.Builder()
